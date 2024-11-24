@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Analysis Chat</title>
+</head>
+<body>
+    <h1>Document Analysis Chat</h1>
+    <div>
+        <h2>Chat History</h2>
+        <div id="chat-history">
+            {% for message in chat_history %}
+                <p><strong>{{ message.role.capitalize() }}:</strong> {{ message.content }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="user_request">Enter your query:</label>
+        <input type="text" id="user_request" name="user_request" placeholder="Type your query" required>
+        <br><br>
+        <input type="file" name="file" accept=".txt,.pdf,.docx">
+        <br><br>
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>
